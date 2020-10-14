@@ -5,14 +5,15 @@ function main() {
     //adalah .c
     var vertexShaderSource = `
         void main() {
-
+        gl_PointSize = 30.0;
+        gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
         }
-    `
-    var fragmentShaderSource =`
+    `;
+    var fragmentShaderSource = `
         void main() {
-
+        gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0);
         }
-    `
+    `;
 
     //adalah .o
     var vertexShader = gl.createShader(gl.VERTEX_SHADER);
@@ -39,7 +40,8 @@ function main() {
     //mulai menggunakan "cat" .exe ke dalam konteks penggambaran
     gl.useProgram(shaderProgram);
 
-    gl.clearColor(0.0, 0.0, 0.0, 1.0);
+    gl.clearColor(0.20, 0.25, 0.5, 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
 
+    gl.drawArrays(gl.POINTS, 0, 1);
 }
